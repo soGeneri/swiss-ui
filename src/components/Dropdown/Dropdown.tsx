@@ -1,0 +1,147 @@
+'use client';
+
+import React, { useState, useRef, useEffect } from 'react';
+import { ChevronDown } from 'lucide-react';
+
+export interface DropdownOption {
+  id: string;
+  label: string;
+  description?: string;
+}
+
+export interface DropdownProps {
+  /** Array of options to display */
+  options: DropdownOption[];
+  /** Currently selected option ID */
+  value: string;
+  /** Callback when selection changes */
+  onChange: (value: string) => void;
+  /** Label displayed above the dropdown */
+  label?: string;
+  /** Description text below the label */
+  description?: string;
+  /** Whether the dropdown is disabled */
+  disabled?: boolean;
+  /** Additional CSS classes */
+  className?: string;
+  /** Placeholder text when no option is selected (default: "Select an option") */
+  placeholder?: string;
+}
+
+/**
+ * Swiss International Style Dropdown Component
+ *
+ * Design Principles:
+ * - Square corners (rounded-none)
+ * - Hard shadows for depth
+ * - Black borders for high contrast
+ * - Checkmark indicator for selected option
+ */
+export function Dropdown({
+  options,
+  value,
+  onChange,
+  label,
+  description,
+  disabled = false,
+  className = '',
+  placeholder = 'Select an option',
+}: DropdownProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const selectedOption = options.find((opt) => opt.id === value);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [isOpen]);
+
+  const handleSelect = (optionId: string) => {
+    onChange(optionId);
+    setIsOpen(false);
+  };
+
+  return (
+    <div className={`space-y-1 ${className}`} ref={containerRef}>
+      {label && (
+        <label className="font-mono text-xs font-bold uppercase tracking-wider text-[var(--swiss-muted,#6B7280)] block">
+          {label}
+        </label>
+      )}
+
+      {description && <p className="text-sm text-[var(--swiss-muted,#6B7280)]">{description}</p>}
+
+      <div className="relative">
+        {/* Trigger Button */}
+        <button
+          ref={buttonRef}
+          type="button"
+          onClick={() => setIsOpen(!isOpen)}
+          disabled={disabled}
+          className="w-full flex items-center justify-between border border-[var(--swiss-border,#000000)] bg-white px-4 py-3 font-mono text-sm transition-all duration-150 ease-out shadow-[var(--swiss-shadow-soft-sm,2px_2px_0px_0px_rgba(0,0,0,0.1))] hover:shadow-none hover:translate-y-[2px] hover:translate-x-[2px] disabled:opacity-50 disabled:cursor-not-allowed rounded-none"
+        >
+          <div className="flex-1 text-left min-w-0">
+            {selectedOption ? (
+              <div>
+                <div className="font-bold text-[var(--swiss-ink,#000000)] truncate">{selectedOption.label}</div>
+                {selectedOption.description && (
+                  <div className="text-xs text-[var(--swiss-muted,#6B7280)] mt-1 font-normal truncate">
+                    {selectedOption.description}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <span className="text-[var(--swiss-placeholder,#9CA3AF)]">{placeholder}</span>
+            )}
+          </div>
+          <ChevronDown
+            className={`w-4 h-4 transition-transform duration-200 ml-2 shrink-0 ${
+              isOpen ? 'rotate-180' : ''
+            }`}
+          />
+        </button>
+
+        {/* Dropdown Menu */}
+        {isOpen && (
+          <div className="absolute top-full left-0 right-0 mt-1 z-50 border border-[var(--swiss-border,#000000)] bg-white shadow-[var(--swiss-shadow-soft-default,4px_4px_0px_0px_rgba(0,0,0,0.1))] rounded-none swiss-animate-slide-up">
+            <div className="max-h-64 overflow-y-auto">
+              {options.map((option, index) => (
+                <React.Fragment key={option.id}>
+                  <button
+                    onClick={() => handleSelect(option.id)}
+                    className={`w-full px-4 py-3 text-left font-mono transition-colors duration-150 border border-[var(--swiss-border,#000000)] ${
+                      option.id === value
+                        ? 'bg-[var(--swiss-success,#15803D)] text-white'
+                        : 'bg-white text-[var(--swiss-ink,#000000)] hover:bg-gray-50'
+                    } ${index > 0 ? '-mt-[1px]' : ''} active:bg-gray-100`}
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="flex-1">
+                        <div className="font-bold text-sm">{option.label}</div>
+                        {option.description && (
+                          <div className="text-xs mt-1 opacity-80">{option.description}</div>
+                        )}
+                      </div>
+                      {option.id === value && <div className="text-lg font-bold mt-0.5">&#10003;</div>}
+                    </div>
+                  </button>
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
