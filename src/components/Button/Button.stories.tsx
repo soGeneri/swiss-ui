@@ -18,6 +18,9 @@ const meta: Meta<typeof Button> = {
     disabled: {
       control: 'boolean',
     },
+    rounded: {
+      control: 'boolean',
+    },
   },
 };
 
@@ -88,6 +91,20 @@ export const IconButtons: Story = {
       <Button variant="success" size="icon"><Download className="w-4 h-4" /></Button>
       <Button variant="outline" size="icon"><ArrowRight className="w-4 h-4" /></Button>
       <Button variant="ghost" size="icon"><Save className="w-4 h-4" /></Button>
+    </div>
+  ),
+};
+
+export const RoundedVariants: Story = {
+  render: () => (
+    <div className="flex flex-wrap gap-4">
+      <Button rounded>Default Rounded</Button>
+      <Button variant="destructive" rounded>Destructive Rounded</Button>
+      <Button variant="success" rounded>Success Rounded</Button>
+      <Button variant="warning" rounded>Warning Rounded</Button>
+      <Button variant="outline" rounded>Outline Rounded</Button>
+      <Button variant="secondary" rounded>Secondary Rounded</Button>
+      <Button variant="ghost" rounded>Ghost Rounded</Button>
     </div>
   ),
 };
