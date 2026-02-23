@@ -48,6 +48,8 @@ export interface ConfirmDialogProps {
   onCancel?: () => void;
   /** Whether to show cancel button (default: true) */
   showCancelButton?: boolean;
+  /** Use rounded corners instead of the default square Swiss aesthetic */
+  rounded?: boolean;
 }
 
 export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
@@ -64,6 +66,7 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
   onConfirm,
   onCancel,
   showCancelButton = true,
+  rounded = false,
 }) => {
   const handleConfirm = () => {
     if (confirmDisabled) return;
@@ -78,10 +81,12 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
     onOpenChange(false);
   };
 
+  const iconClass = `w-12 h-12 border-2 flex items-center justify-center ${rounded ? 'rounded-full' : ''}`;
+
   const variantStyles = {
     danger: {
       icon: (
-        <div className="w-12 h-12 border-2 border-[var(--swiss-destructive,#DC2626)] bg-red-50 flex items-center justify-center">
+        <div className={`${iconClass} border-[var(--swiss-destructive,#DC2626)] bg-red-50`}>
           <span className="text-[var(--swiss-destructive,#DC2626)] text-2xl font-bold">!</span>
         </div>
       ),
@@ -89,7 +94,7 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
     },
     warning: {
       icon: (
-        <div className="w-12 h-12 border-2 border-[var(--swiss-warning,#F97316)] bg-orange-50 flex items-center justify-center">
+        <div className={`${iconClass} border-[var(--swiss-warning,#F97316)] bg-orange-50`}>
           <span className="text-[var(--swiss-warning,#F97316)] text-2xl font-bold">!</span>
         </div>
       ),
@@ -97,7 +102,7 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
     },
     success: {
       icon: (
-        <div className="w-12 h-12 border-2 border-[var(--swiss-success,#15803D)] bg-green-50 flex items-center justify-center">
+        <div className={`${iconClass} border-[var(--swiss-success,#15803D)] bg-green-50`}>
           <span className="text-[var(--swiss-success,#15803D)] text-2xl font-bold">&#10003;</span>
         </div>
       ),
@@ -105,7 +110,7 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
     },
     default: {
       icon: (
-        <div className="w-12 h-12 border-2 border-[var(--swiss-primary,#1D4ED8)] bg-blue-50 flex items-center justify-center">
+        <div className={`${iconClass} border-[var(--swiss-primary,#1D4ED8)] bg-blue-50`}>
           <span className="text-[var(--swiss-primary,#1D4ED8)] text-2xl font-bold">?</span>
         </div>
       ),
@@ -117,7 +122,7 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-[425px] p-0 gap-0">
+      <DialogContent className="sm:max-w-[425px] p-0 gap-0" rounded={rounded}>
         <DialogHeader className="p-6 pb-4">
           <div className="flex items-start gap-4">
             {icon}
@@ -140,14 +145,14 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
         )}
         <DialogFooter className="p-4 bg-[var(--swiss-panel,#E5E5E0)] border-t border-[var(--swiss-border,#000000)] flex-row justify-end gap-3">
           {showCancelButton && (
-            <Button variant="outline" onClick={handleCancel} className="rounded-none border-[var(--swiss-border,#000000)]">
+            <Button variant="outline" rounded={rounded} onClick={handleCancel}>
               {cancelLabel}
             </Button>
           )}
           <Button
             variant={buttonVariant}
             onClick={handleConfirm}
-            className="rounded-none"
+            rounded={rounded}
             disabled={confirmDisabled}
           >
             {confirmLabel}

@@ -41,10 +41,12 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
    * - `icon`: Square icon button (h-10 w-10)
    */
   size?: 'default' | 'sm' | 'lg' | 'icon';
+  /** Use rounded corners instead of the default square Swiss aesthetic */
+  rounded?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = 'default', size = 'default', ...props }, ref) => {
+  ({ className, variant = 'default', size = 'default', rounded = false, ...props }, ref) => {
     // Base styles applied to ALL buttons
     // Swiss Design: clean, functional, high contrast
     const baseStyles = cn(
@@ -59,8 +61,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       'disabled:pointer-events-none disabled:opacity-50',
       // SVG icon sizing
       "[&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0",
-      // Swiss Design: NO rounded corners
-      'rounded-none'
+      rounded ? 'rounded-md' : 'rounded-none'
     );
 
     // Variant styles - each has distinct purpose and color

@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { cn } from '../../utils/cn';
 
-export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  /** Use rounded corners instead of the default square Swiss aesthetic */
+  rounded?: boolean;
+}
 
 /**
  * Swiss International Style Textarea Component
@@ -12,7 +15,7 @@ export type TextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
  * - Focus ring in Hyper Blue
  */
 const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
-  ({ className, ...props }, ref) => {
+  ({ className, rounded = false, ...props }, ref) => {
     return (
       <textarea
         className={cn(
@@ -20,7 +23,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           'shadow-sm placeholder:text-[var(--swiss-placeholder,#9CA3AF)]',
           'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--swiss-focus-ring,#1D4ED8)]',
           'disabled:cursor-not-allowed disabled:opacity-50',
-          'rounded-none',
+          rounded ? 'rounded-md' : 'rounded-none',
           className
         )}
         ref={ref}

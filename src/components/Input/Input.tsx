@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { cn } from '../../utils/cn';
 
-export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  /** Use rounded corners instead of the default square Swiss aesthetic */
+  rounded?: boolean;
+}
 
 /**
  * Swiss International Style Input Component
@@ -12,7 +15,7 @@ export type InputProps = React.InputHTMLAttributes<HTMLInputElement>;
  * - Focus ring in Hyper Blue
  */
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
+  ({ className, type, rounded = false, ...props }, ref) => {
     return (
       <input
         type={type}
@@ -21,7 +24,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           'shadow-sm placeholder:text-[var(--swiss-placeholder,#9CA3AF)]',
           'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[var(--swiss-focus-ring,#1D4ED8)]',
           'disabled:cursor-not-allowed disabled:opacity-50',
-          'rounded-none',
+          rounded ? 'rounded-md' : 'rounded-none',
           className
         )}
         ref={ref}

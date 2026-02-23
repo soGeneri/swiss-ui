@@ -102,12 +102,15 @@ export interface DialogContentProps {
   className?: string;
   /** Accessible label for close button */
   closeLabel?: string;
+  /** Use rounded corners instead of the default square Swiss aesthetic */
+  rounded?: boolean;
 }
 
 const DialogContent: React.FC<DialogContentProps> = ({
   children,
   className,
   closeLabel = 'Close',
+  rounded = false,
 }) => {
   const { open, onOpenChange } = useDialogContext();
 
@@ -151,7 +154,7 @@ const DialogContent: React.FC<DialogContentProps> = ({
             'relative w-full max-w-lg',
             'border border-[var(--swiss-border,#000000)] bg-[var(--swiss-canvas,#F0F0E8)]',
             'shadow-[var(--swiss-shadow-xl,8px_8px_0px_0px_rgba(0,0,0,0.2))]',
-            'rounded-none',
+            rounded ? 'rounded-xl' : 'rounded-none',
             'swiss-animate-zoom-in',
             className
           )}

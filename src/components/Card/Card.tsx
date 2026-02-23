@@ -12,6 +12,8 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'interactive' | 'outline' | 'ghost';
   /** Remove default padding */
   noPadding?: boolean;
+  /** Use rounded corners instead of the default square Swiss aesthetic */
+  rounded?: boolean;
 }
 
 /**
@@ -23,8 +25,8 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
  * - Interactive variant shows depth on hover
  */
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ className, variant = 'default', noPadding = false, ...props }, ref) => {
-    const baseStyles = 'rounded-none flex flex-col relative';
+  ({ className, variant = 'default', noPadding = false, rounded = false, ...props }, ref) => {
+    const baseStyles = cn('flex flex-col relative', rounded ? 'rounded-xl' : 'rounded-none');
 
     const variants = {
       default: 'bg-[var(--swiss-canvas,#F0F0E8)]',

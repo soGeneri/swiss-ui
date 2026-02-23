@@ -28,6 +28,8 @@ export interface RetroTabsProps {
   onTabChange: (tabId: string) => void;
   /** Additional CSS classes */
   className?: string;
+  /** Use rounded corners instead of the default square Swiss aesthetic */
+  rounded?: boolean;
 }
 
 export const RetroTabs: React.FC<RetroTabsProps> = ({
@@ -35,6 +37,7 @@ export const RetroTabs: React.FC<RetroTabsProps> = ({
   activeTab,
   onTabChange,
   className,
+  rounded = false,
 }) => {
   return (
     <div className={cn('flex gap-0 border-b border-[var(--swiss-border,#000000)]', className)}>
@@ -50,6 +53,7 @@ export const RetroTabs: React.FC<RetroTabsProps> = ({
             className={cn(
               'px-4 py-2 font-mono text-xs uppercase tracking-wider transition-all',
               'border border-b-0 border-[var(--swiss-border,#000000)] -mb-px',
+              rounded ? 'rounded-t-md' : 'rounded-none',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--swiss-focus-ring,#1D4ED8)] focus-visible:ring-offset-2',
               isActive && [
                 'bg-white text-[var(--swiss-ink,#000000)] font-bold',
