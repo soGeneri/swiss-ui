@@ -40,7 +40,7 @@ export const Default: Story = {
   render: () => <BasicDropdown />,
 };
 
-const WithDescriptions = () => {
+const WithDescriptionsRender = () => {
   const [value, setValue] = useState('modern');
   const options = [
     { id: 'classic', label: 'Classic', description: 'Traditional single-column layout' },
@@ -63,10 +63,10 @@ const WithDescriptions = () => {
 };
 
 export const WithDescriptions: Story = {
-  render: () => <WithDescriptions />,
+  render: () => <WithDescriptionsRender />,
 };
 
-const PreselectedValue = () => {
+const PreselectedValueRender = () => {
   const [value, setValue] = useState('english');
   const options = [
     { id: 'english', label: 'English', description: 'US English' },
@@ -88,7 +88,7 @@ const PreselectedValue = () => {
 };
 
 export const PreselectedValue: Story = {
-  render: () => <PreselectedValue />,
+  render: () => <PreselectedValueRender />,
 };
 
 const DisabledDropdown = () => {
@@ -114,7 +114,7 @@ export const Disabled: Story = {
   render: () => <DisabledDropdown />,
 };
 
-const CustomPlaceholder = () => {
+const CustomPlaceholderRender = () => {
   const [value, setValue] = useState('');
   const options = [
     { id: 'sm', label: 'Small' },
@@ -137,10 +137,10 @@ const CustomPlaceholder = () => {
 };
 
 export const CustomPlaceholder: Story = {
-  render: () => <CustomPlaceholder />,
+  render: () => <CustomPlaceholderRender />,
 };
 
-const ManyOptions = () => {
+const ManyOptionsRender = () => {
   const [value, setValue] = useState('');
   const options = Array.from({ length: 20 }, (_, i) => ({
     id: `item-${i + 1}`,
@@ -162,5 +162,5 @@ const ManyOptions = () => {
 };
 
 export const ManyOptions: Story = {
-  render: () => <ManyOptions />,
+  render: () => <ManyOptionsRender />,
 };

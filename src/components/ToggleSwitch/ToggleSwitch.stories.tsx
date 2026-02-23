@@ -37,7 +37,7 @@ export const Default: Story = {
   render: () => <BasicToggle />,
 };
 
-const WithDescription = () => {
+const WithDescriptionRender = () => {
   const [checked, setChecked] = useState(true);
 
   return (
@@ -53,7 +53,7 @@ const WithDescription = () => {
 };
 
 export const WithDescription: Story = {
-  render: () => <WithDescription />,
+  render: () => <WithDescriptionRender />,
 };
 
 const CheckedState = () => {
@@ -141,7 +141,7 @@ export const SettingsPanelExample: Story = {
   render: () => <SettingsPanel />,
 };
 
-const AllStates = () => (
+const AllStatesRender = () => (
   <div className="space-y-4 w-80">
     <ToggleSwitch
       checked={false}
@@ -169,5 +169,5 @@ const AllStates = () => (
 );
 
 export const AllStates: Story = {
-  render: () => <AllStates />,
+  render: () => <AllStatesRender />,
 };
