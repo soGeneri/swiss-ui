@@ -9,7 +9,7 @@ import {
   DialogFooter,
 } from '../Dialog';
 import { Button } from '../Button';
-import { colors } from '@swiss-ui/tokens';
+import { colors } from 'swiss-ui-tokens';
 
 export interface ConfirmDialogProps {
   open: boolean;

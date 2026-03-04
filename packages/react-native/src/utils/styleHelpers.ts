@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { shadowToRN, type ShadowToken } from '@swiss-ui/tokens';
+import { shadowToRN, type ShadowToken } from 'swiss-ui-tokens';
 
 export function createShadow(token: ShadowToken) {
   return shadowToRN(token);

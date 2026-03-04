@@ -9,8 +9,8 @@
  *
  * @example
  * ```tsx
- * import '@swiss-ui/react/styles';
- * import { Button, Card, Dialog } from '@swiss-ui/react';
+ * import 'swiss-ui-react/styles';
+ * import { Button, Card, Dialog } from 'swiss-ui-react';
  * ```
  */
 
@@ -77,6 +77,34 @@ export type { DropdownProps, DropdownOption } from './components/Dropdown';
 
 export { ToggleSwitch } from './components/ToggleSwitch';
 export type { ToggleSwitchProps } from './components/ToggleSwitch';
+
+// New Components (Tier 3)
+export { Badge } from './components/Badge';
+export type { BadgeProps } from './components/Badge';
+
+export { Checkbox } from './components/Checkbox';
+export type { CheckboxProps } from './components/Checkbox';
+
+export { RadioGroup } from './components/RadioGroup';
+export type { RadioGroupProps, RadioOption } from './components/RadioGroup';
+
+export { Spinner } from './components/Spinner';
+export type { SpinnerProps } from './components/Spinner';
+
+export { Alert, AlertTitle, AlertDescription } from './components/Alert';
+export type { AlertProps } from './components/Alert';
+
+export { Progress } from './components/Progress';
+export type { ProgressProps } from './components/Progress';
+
+export { Avatar } from './components/Avatar';
+export type { AvatarProps } from './components/Avatar';
+
+export { Separator } from './components/Separator';
+export type { SeparatorProps } from './components/Separator';
+
+export { Accordion } from './components/Accordion';
+export type { AccordionProps, AccordionItem } from './components/Accordion';
 
 // Utility exports
 export { cn } from './utils/cn';

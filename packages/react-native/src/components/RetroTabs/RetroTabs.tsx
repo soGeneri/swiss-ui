@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Pressable, ScrollView, StyleSheet } from 'react-native';
-import { colors } from '@swiss-ui/tokens';
+import { colors } from 'swiss-ui-tokens';
 
 export interface Tab {
   id: string;

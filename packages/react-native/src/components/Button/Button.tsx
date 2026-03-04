@@ -7,7 +7,7 @@ import {
   StyleSheet,
   type PressableProps,
 } from 'react-native';
-import { colors, shadows } from '@swiss-ui/tokens';
+import { colors, shadows } from 'swiss-ui-tokens';
 
 export interface ButtonProps extends Omit<PressableProps, 'style'> {
   variant?: 'default' | 'destructive' | 'success' | 'warning' | 'outline' | 'secondary' | 'ghost' | 'link';

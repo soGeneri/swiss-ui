@@ -1,5 +1,5 @@
 {
-  "name": "@swiss-ui/react",
+  "name": "swiss-ui-react",
   "version": "0.1.0",
   "description": "Swiss International Style React component library",
   "author": "Resume Matcher",
@@ -76,7 +76,7 @@
     }
   },
   "dependencies": {
-    "@swiss-ui/tokens": "*",
+    "swiss-ui-tokens": "*",
     "clsx": "^2.1.1",
     "lucide-react": "^0.468.0",
     "tailwind-merge": "^2.5.5"

@@ -11,7 +11,7 @@
  *
  * @example
  * ```tsx
- * import { RichTextEditor } from '@swiss-ui/react/rich-text';
+ * import { RichTextEditor } from 'swiss-ui-react/rich-text';
  *
  * <RichTextEditor
  *   value={html}

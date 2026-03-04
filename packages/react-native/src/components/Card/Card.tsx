@@ -9,7 +9,7 @@ import {
   type TextProps,
   type PressableProps,
 } from 'react-native';
-import { colors, shadows } from '@swiss-ui/tokens';
+import { colors, shadows } from 'swiss-ui-tokens';
 
 export interface CardProps extends ViewProps {
   variant?: 'default' | 'interactive' | 'outline' | 'ghost';

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { View, Text, Pressable, Animated, StyleSheet } from 'react-native';
-import { colors, radius } from '@swiss-ui/tokens';
+import { colors, radius } from 'swiss-ui-tokens';
 
 export interface ToggleSwitchProps {
   checked: boolean;

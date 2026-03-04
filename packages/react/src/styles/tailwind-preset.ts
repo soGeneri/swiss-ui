@@ -7,7 +7,7 @@
  * @example
  * ```ts
  * // tailwind.config.ts
- * import swissPreset from '@swiss-ui/react/tailwind-preset';
+ * import swissPreset from 'swiss-ui-react/tailwind-preset';
  *
  * export default {
  *   presets: [swissPreset],

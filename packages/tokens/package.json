@@ -1,5 +1,5 @@
 {
-  "name": "@swiss-ui/tokens",
+  "name": "swiss-ui-tokens",
   "version": "0.1.0",
   "description": "Design tokens for Swiss UI — shared between web and React Native",
   "author": "Resume Matcher",

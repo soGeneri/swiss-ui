@@ -7,7 +7,7 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
-import { colors, shadows } from '@swiss-ui/tokens';
+import { colors, shadows } from 'swiss-ui-tokens';
 
 interface DialogContextValue {
   open: boolean;

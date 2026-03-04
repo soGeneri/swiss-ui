@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, StyleSheet, type TextProps } from 'react-native';
-import { colors } from '@swiss-ui/tokens';
+import { colors } from 'swiss-ui-tokens';
 
 export interface LabelProps extends TextProps {
   htmlFor?: string;

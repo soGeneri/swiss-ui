@@ -14,7 +14,7 @@
     "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "@swiss-ui/tokens": ["../tokens/src/index.ts"]
+      "swiss-ui-tokens": ["../tokens/src/index.ts"]
     }
   },
   "include": ["src/**/*"],

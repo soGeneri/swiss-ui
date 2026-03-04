@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TextInput, View, Text, StyleSheet, type TextInputProps } from 'react-native';
-import { colors } from '@swiss-ui/tokens';
+import { colors } from 'swiss-ui-tokens';
 
 export interface TextareaProps extends TextInputProps {
   label?: string;
