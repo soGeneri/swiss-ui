@@ -3,65 +3,185 @@
  *
  * Design tokens for the Swiss UI component library.
  * These can be overridden to customize the theme.
+ *
+ * Includes:
+ * - Core --swiss-* tokens (backwards compatible)
+ * - Semantic shorthand aliases (--background, --foreground, etc.)
+ *   matching shadcn/ui convention for interoperability
+ * - Dark mode via .dark class
+ * - Sidebar tokens
  */
 
 :root {
   /* ===========================================
-     COLOR PALETTE
+     SWISS CANONICAL TOKENS
      =========================================== */
 
   /* Core Colors */
-  --swiss-canvas: #F0F0E8;      /* Background - warm off-white */
-  --swiss-ink: #000000;          /* Primary text - pure black */
-  --swiss-panel: #E5E5E0;        /* Panel/secondary background */
-  --swiss-panel-dark: #D8D8D2;   /* Panel hover state */
+  --swiss-canvas: #F0F0E8;
+  --swiss-ink: #000000;
+  --swiss-panel: #E5E5E0;
+  --swiss-panel-dark: #D8D8D2;
+  --swiss-white: #FFFFFF;
 
   /* Semantic Colors */
-  --swiss-primary: #1D4ED8;      /* Hyper Blue - primary actions */
-  --swiss-primary-hover: #1E40AF;/* Hyper Blue hover */
-  --swiss-success: #15803D;      /* Signal Green - positive actions */
-  --swiss-success-hover: #166534;/* Signal Green hover */
-  --swiss-warning: #F97316;      /* Alert Orange - caution actions */
-  --swiss-warning-hover: #EA580C;/* Alert Orange hover */
-  --swiss-destructive: #DC2626;  /* Alert Red - destructive actions */
-  --swiss-destructive-hover: #B91C1C;/* Alert Red hover */
+  --swiss-primary: #1D4ED8;
+  --swiss-primary-hover: #1E40AF;
+  --swiss-success: #15803D;
+  --swiss-success-hover: #166534;
+  --swiss-warning: #F97316;
+  --swiss-warning-hover: #EA580C;
+  --swiss-destructive: #DC2626;
+  --swiss-destructive-hover: #B91C1C;
 
   /* UI Colors */
-  --swiss-border: #000000;       /* Border color */
-  --swiss-focus-ring: #1D4ED8;   /* Focus ring color */
-  --swiss-muted: #6B7280;        /* Muted text */
-  --swiss-placeholder: #9CA3AF;  /* Placeholder text */
+  --swiss-border: #000000;
+  --swiss-focus-ring: #1D4ED8;
+  --swiss-muted: #6B7280;
+  --swiss-placeholder: #9CA3AF;
 
-  /* ===========================================
-     SHADOWS (Hard shadows - no blur)
-     =========================================== */
+  /* Shadows (hard, no blur) */
   --swiss-shadow-sm: 2px 2px 0px 0px #000000;
   --swiss-shadow-default: 4px 4px 0px 0px #000000;
   --swiss-shadow-lg: 6px 6px 0px 0px #000000;
-  --swiss-shadow-xl: 8px 8px 0px 0px rgba(0,0,0,0.2);
+  --swiss-shadow-xl: 8px 8px 0px 0px rgba(0, 0, 0, 0.2);
+  --swiss-shadow-soft-sm: 2px 2px 0px 0px rgba(0, 0, 0, 0.1);
+  --swiss-shadow-soft-default: 4px 4px 0px 0px rgba(0, 0, 0, 0.1);
 
-  /* Soft variants for subtle depth */
-  --swiss-shadow-soft-sm: 2px 2px 0px 0px rgba(0,0,0,0.1);
-  --swiss-shadow-soft-default: 4px 4px 0px 0px rgba(0,0,0,0.1);
-
-  /* ===========================================
-     TYPOGRAPHY
-     =========================================== */
-  --swiss-font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Typography */
+  --swiss-font-sans: 'Geist', system-ui, -apple-system, sans-serif;
   --swiss-font-serif: Georgia, Cambria, 'Times New Roman', Times, serif;
-  --swiss-font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+  --swiss-font-mono: 'Geist Mono', 'Space Grotesk', ui-monospace, 'Courier New', monospace;
+
+  /* Radius (square by default — brutalist aesthetic) */
+  --swiss-radius: 0px;
 
   /* ===========================================
-     SPACING & SIZING
+     SEMANTIC ALIASES (shadcn/ui compatible)
+     These map to the canonical tokens above.
      =========================================== */
-  --swiss-radius: 0px;           /* Square corners - brutalist aesthetic */
+
+  --background: #F0F0E8;
+  --foreground: #000000;
+
+  --card: #F0F0E8;
+  --card-foreground: #000000;
+
+  --popover: #F0F0E8;
+  --popover-foreground: #000000;
+
+  --primary: #1D4ED8;
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #E5E5E0;
+  --secondary-foreground: #000000;
+
+  --muted: #E5E5E0;
+  --muted-foreground: #6B7280;
+
+  --accent: #E5E5E0;
+  --accent-foreground: #000000;
+
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+
+  --success: #15803D;
+  --success-foreground: #FFFFFF;
+
+  --warning: #F97316;
+  --warning-foreground: #FFFFFF;
+
+  --border: #000000;
+  --input: #F0F0E8;
+  --ring: #1D4ED8;
+
+  --radius: 0rem;
+
+  /* Chart colors */
+  --chart-1: #1D4ED8;
+  --chart-2: #15803D;
+  --chart-3: #F97316;
+  --chart-4: #DC2626;
+  --chart-5: #000000;
+
+  /* ===========================================
+     SIDEBAR TOKENS
+     =========================================== */
+
+  --sidebar: #E5E5E0;
+  --sidebar-foreground: #000000;
+  --sidebar-primary: #1D4ED8;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #D8D8D2;
+  --sidebar-accent-foreground: #000000;
+  --sidebar-border: #000000;
+  --sidebar-ring: #1D4ED8;
+}
+
+/* ===========================================
+   DARK MODE
+   =========================================== */
+
+.dark {
+  --swiss-canvas: #1A1A1A;
+  --swiss-ink: #FFFFFF;
+  --swiss-panel: #2A2A2A;
+  --swiss-panel-dark: #333333;
+  --swiss-border: #404040;
+  --swiss-muted: #A3A3A3;
+  --swiss-placeholder: #6B7280;
+  --swiss-primary: #3B82F6;
+  --swiss-primary-hover: #2563EB;
+  --swiss-focus-ring: #3B82F6;
+  --swiss-destructive: #EF4444;
+  --swiss-destructive-hover: #DC2626;
+
+  --swiss-shadow-sm: 2px 2px 0px 0px #404040;
+  --swiss-shadow-default: 4px 4px 0px 0px #404040;
+  --swiss-shadow-lg: 6px 6px 0px 0px #404040;
+
+  --background: #1A1A1A;
+  --foreground: #FFFFFF;
+
+  --card: #2A2A2A;
+  --card-foreground: #FFFFFF;
+
+  --popover: #2A2A2A;
+  --popover-foreground: #FFFFFF;
+
+  --primary: #3B82F6;
+  --primary-foreground: #FFFFFF;
+
+  --secondary: #2A2A2A;
+  --secondary-foreground: #FFFFFF;
+
+  --muted: #2A2A2A;
+  --muted-foreground: #A3A3A3;
+
+  --accent: #2A2A2A;
+  --accent-foreground: #FFFFFF;
+
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+
+  --border: #404040;
+  --input: #2A2A2A;
+  --ring: #3B82F6;
+
+  --sidebar: #0F0F0F;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #3B82F6;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #1A1A1A;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #404040;
+  --sidebar-ring: #3B82F6;
 }
 
 /* ===========================================
    BASE STYLES
    =========================================== */
 
-/* Reset border-radius for Swiss style */
 .swiss-ui *,
 .swiss-ui *::before,
 .swiss-ui *::after {
@@ -73,44 +193,36 @@
    =========================================== */
 
 @keyframes swiss-fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 @keyframes swiss-zoom-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 @keyframes swiss-slide-up {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.swiss-animate-fade-in {
-  animation: swiss-fade-in 200ms ease-out;
+@keyframes swiss-slide-in-right {
+  from { opacity: 0; transform: translateX(100%); }
+  to   { opacity: 1; transform: translateX(0); }
 }
 
-.swiss-animate-zoom-in {
-  animation: swiss-zoom-in 200ms ease-out;
+@keyframes swiss-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
-.swiss-animate-slide-up {
-  animation: swiss-slide-up 200ms ease-out;
+@keyframes swiss-gradient {
+  to { background-position: 200% center; }
 }
+
+.swiss-animate-fade-in      { animation: swiss-fade-in 200ms ease-out; }
+.swiss-animate-zoom-in      { animation: swiss-zoom-in 200ms ease-out; }
+.swiss-animate-slide-up     { animation: swiss-slide-up 200ms ease-out; }
+.swiss-animate-slide-in-right { animation: swiss-slide-in-right 200ms ease-out; }
+.swiss-animate-gradient     { animation: swiss-gradient 8s linear infinite; }

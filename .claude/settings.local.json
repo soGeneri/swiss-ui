@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:resumematcher.fyi)"
+      "WebFetch(domain:resumematcher.fyi)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebSearch",
+      "WebFetch(domain:api.github.com)",
+      "Bash(npx tsc:*)"
     ]
   }
 }

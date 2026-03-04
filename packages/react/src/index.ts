@@ -106,5 +106,39 @@ export type { SeparatorProps } from './components/Separator';
 export { Accordion } from './components/Accordion';
 export type { AccordionProps, AccordionItem } from './components/Accordion';
 
+export { Skeleton } from './components/Skeleton';
+export type { SkeletonProps } from './components/Skeleton';
+
+export {
+  Table,
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableRow,
+  TableHead,
+  TableCell,
+  TableCaption,
+} from './components/Table';
+export type { TableProps } from './components/Table';
+
+export { ToastProvider, Toaster, useToast } from './components/Toast';
+export type { ToastData, ToastVariant } from './components/Toast';
+
+export { Navbar, NavbarBrand, NavbarContent, NavbarItem } from './components/Navbar';
+export type { NavbarProps, NavbarBrandProps, NavbarContentProps, NavbarItemProps } from './components/Navbar';
+
+export {
+  Sidebar,
+  SidebarHeader,
+  SidebarContent,
+  SidebarFooter,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+} from './components/Sidebar';
+export type { SidebarProps, SidebarMenuButtonProps } from './components/Sidebar';
+
 // Utility exports
 export { cn } from './utils/cn';

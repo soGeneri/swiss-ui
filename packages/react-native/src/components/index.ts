@@ -17,3 +17,5 @@ export * from './Progress';
 export * from './Avatar';
 export * from './Separator';
 export * from './Accordion';
+export * from './Skeleton';
+export * from './Table';
